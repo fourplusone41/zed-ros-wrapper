@@ -67,6 +67,8 @@ add_service_files( FILES
     set_initial_pose.srv
     reset_odometry.srv
     reset_tracking.srv
+    start_svo_recording.srv
+    stop_svo_recording.srv
   )
 
 generate_messages()
@@ -143,8 +145,8 @@ add_dependencies(zed_wrapper_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${PROJECT_
 
 #Add all files in subdirectories of the project in
 # a dummy_target so qtcreator have access to all files
-FILE(GLOB_RECURSE extra_files ${CMAKE_SOURCE_DIR}/*)
-add_custom_target(dummy_${PROJECT_NAME} SOURCES ${extra_files})
+FILE(GLOB_RECURSE all_files ${CMAKE_SOURCE_DIR}/*)
+add_custom_target(all_files_${PROJECT_NAME} SOURCES ${all_files})
 
 ###############################################################################
 # INSTALL
